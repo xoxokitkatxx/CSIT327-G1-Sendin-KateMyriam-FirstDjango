@@ -1,8 +1,24 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
-from django.views.generic import CreateView
+from django.views.generic import CreateView, UpdateView
 from .forms import CustomUserCreationForm
+from .models import CustomUser
 
-class SignUpView(CreateView):
+
+class SignUpView(SuccessMessageMixin, CreateView):
     form_class = CustomUserCreationForm
     template_name = "registration/signup.html"
     success_url = reverse_lazy("login")
+    success_message = "Your account has been created successfully! You can now log in."
+
+
+class ProfileUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
+    model = CustomUser
+    fields = ["first_name", "last_name", "email", "course"]
+    template_name = "accounts/profile.html"
+    success_url = reverse_lazy("profile")
+    success_message = "Your profile has been updated successfully!"
+
+    def get_object(self):
+        return self.request.user
