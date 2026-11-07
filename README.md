@@ -1,58 +1,38 @@
 # CampusConnect
-
-CampusConnect is a Django campus membership web application where students, instructors, and administrators can register, log in, view campus membership statistics on a dashboard, manage their personal profile, and access role-restricted administration pages.
-
 - **Author:** Kate Myriam B. Sendin
-- **Course:** CSIT327
+- **Course:** CSIT327 - G1
 
-## Features
-- **Sign-Up with Feedback:** New users register with a custom user creation form and receive a dismissible Bootstrap 5 success alert upon redirect to the login page.
-- **Authentication:** Session-based login and CSRF-protected POST logout.
-- **Member Dashboard:** Displays the logged-in user's name, role, course, total member count, and last login date.
-- **Editable User Profile:** Logged-in users can view and update their own profile information (`username`, `email`, `first_name`, `last_name`, `course`) via a class-based `UpdateView`.
-- **Role-Based Admin Panel:** Custom `CustomUser` model supporting `Student`, `Instructor`, and `Administrator` roles, with an `Administrator`-restricted `/admin-panel/` view.
-
-## Tech Stack
-- **Language:** Python 3
-- **Framework:** Django 6.1.2
-- **Front-End Styling:** Bootstrap 5.3.3 loaded via jsDelivr CDN
-- **Database:** SQLite (`db.sqlite3`)
-
-## Project Structure
-```text
-Sendin_CampusConnect/
-├── accounts/
-│   ├── migrations/
-│   ├── admin.py
-│   ├── apps.py
-│   ├── forms.py
-│   ├── models.py
-│   ├── tests.py
-│   ├── urls.py
-│   └── views.py
-├── campusconnect/
-│   ├── asgi.py
-│   ├── settings.py
-│   ├── urls.py
-│   └── wsgi.py
-├── dashboard/
-│   ├── migrations/
-│   ├── admin.py
-│   ├── apps.py
-│   ├── models.py
-│   ├── tests.py
-│   ├── urls.py
-│   └── views.py
-├── templates/
-│   ├── accounts/
-│   │   └── profile.html
-│   ├── dashboard/
-│   │   ├── admin_panel.html
-│   │   └── home.html
-│   ├── registration/
-│   │   ├── login.html
-│   │   └── signup.html
-│   └── base.html
-├── manage.py
-├── requirements.txt
-└── README.md
+## Setup and Run Instructions
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/xoxokitkatxx/CSIT327-G1-Sendin-KateMyriam-FirstDjango.git
+   cd CSIT327-G1-Sendin-KateMyriam-FirstDjango
+   ```
+2. **Create and activate a virtual environment:**
+   - **Windows:**
+     ```bash
+     python -m venv .venv
+     .venv\Scripts\activate
+     ```
+   - **Mac/Linux:**
+     ```bash
+     python3 -m venv .venv
+     source .venv/bin/activate
+     ```
+3. **Install dependencies:**
+   ```bash
+   pip install -r requirements.txt
+   ```
+4. **Apply database migrations:**
+   ```bash
+   python manage.py migrate
+   ```
+5. **Create a superuser (optional, for testing admin access):**
+   ```bash
+   python manage.py createsuperuser
+   ```
+6. **Start the development server:**
+   ```bash
+   python manage.py runserver
+   ```
+7. Open `http://127.0.0.1:8000/` in your browser.
