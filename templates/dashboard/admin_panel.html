@@ -1,5 +1,13 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 
-{%block content %}
-    <h2>Admin Panel</h2>
+{% block title %}Admin Panel - CampusConnect{% endblock %}
+
+{% block content %}
+<div class="card">
+  <div class="card-body p-4">
+    <h1 class="h3 fw-bold mb-2">Admin Panel</h1>
+    <p class="text-muted mb-3">Manage CampusConnect settings and members here.</p>
+    <a href="{% url 'dashboard' %}" class="btn btn-outline-secondary">Back to Dashboard</a>
+  </div>
+</div>
 {% endblock %}
